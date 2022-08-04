@@ -4,26 +4,20 @@ const { response } = require("express");
 const express = require("express");
 const app = express(); //
 app.use(express.json());
-const PORT = 8080;
+
 const courses = [
     {id:1, name:'course1'},
     {id:2, name:'course2'},
     {id:3, name:'course3'},
 ];
 app.get('/', (request, response)=> {
-        response.send('You ready for the big day buddy?');
+      return  response.send('You ready for the big day buddy?');
  });
+ const port = process.env.PORT||3000;
 app.listen(
-        PORT,
-        () => console.log(`it's alive on http:/localhost:${PORT}`)
+        port,
+        () => console.log(`it's alive on http:/localhost:${port}`)
 )
-
-
-
-
-app.get('/', (request, response)=> {
-    response.send('Muraho amakuru yanyu?');
-});
 
 app.get('/api/courses',(request,response)=>{                //http://localhost:8080/api/courses
     response.send(courses);
